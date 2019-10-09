@@ -2,29 +2,26 @@ const connection = require('../config/connection.js');
 
 const orm = {
   selectAll: function(table, cb) {
-    const queryString = `SELECT * FROM ${table};`;
-    connection.query(queryString, function(err, result) {
+    const queryString = 'SELECT * FROM ??';
+    connection.query(queryString, [table], (err, result) => {
       if (err) throw err;
       cb(result);
     });
   },
   insertOne: function(table, col, val, cb) {
-    const queryString = `INSERT INTO ${table} (${col}) VALUES (?);`;
-    connection.query(queryString, val, (err, result) => {
+    const queryString = 'INSERT INTO ?? (??) VALUES (?)';
+    connection.query(queryString, [table, col, val], (err, result) => {
       if (err) throw err;
       cb(result);
     });
   },
   updateOne: function(table, col, val, id, cb) {
-    const queryString = `UPDATE ${table} SET ?? = ? WHERE id = ?`;
-
-    console.log(queryString);
-    connection.query(queryString, [col, '' + val, id], (err, result) => {
+    const queryString = 'UPDATE ?? SET ?? = ? WHERE id = ?';
+    connection.query(queryString, [table, col, val, id], (err, result) => {
       if (err) throw err;
       cb(result);
     });
   }
 };
 
-// Export the orm object for the model (cat.js).
 module.exports = orm;
