@@ -1,6 +1,6 @@
 const orm = require('../config/orm.js');
 
-const burgers = {
+const burger = {
   all: function(cb) {
     orm.selectAll('burgers', res => cb(res));
   },
@@ -8,8 +8,8 @@ const burgers = {
     orm.insertOne('burgers', col, val, res => cb(res));
   },
   update: function(col, val, id, cb) {
-    orm.updateOne('burgers', col, val, id, (res = cb(res)));
+    orm.updateOne('burgers', col, val, id, res => cb(res));
   }
 };
 
-module.exports = burgers;
+module.exports = burger;

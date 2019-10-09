@@ -9,7 +9,7 @@ const orm = {
     });
   },
   insertOne: function(table, col, val, cb) {
-    const queryString = `INSERT INTO (${col}) ${table} VALUES (?);`;
+    const queryString = `INSERT INTO ${table} (${col}) VALUES (?);`;
     connection.query(queryString, val, (err, result) => {
       if (err) throw err;
       cb(result);
@@ -19,7 +19,7 @@ const orm = {
     const queryString = `UPDATE ${table} SET ?? = ? WHERE id = ?`;
 
     console.log(queryString);
-    connection.query(queryString, [col, val, id], (err, result) => {
+    connection.query(queryString, [col, '' + val, id], (err, result) => {
       if (err) throw err;
       cb(result);
     });
