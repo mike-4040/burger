@@ -1,32 +1,43 @@
-<h1>Make and eat Burgers</h1>
-
-<h2>Burgers ready to eat</h2>
-
-<ul>
-  {{#each burgers}}
-    {{#unless devoured}}
-      {{> burgers/burger-block available=true}}
-    {{/unless}}
-  {{/each}}
-</ul>
-
-<h2>Devoured Burgers</h2>
-
-<ul>
-  {{#each burgers}}
-    {{#if devoured}}
-      {{> burgers/burger-block available=false}}
-    {{/if}}
-  {{/each}}
-</ul>
-
-<h2>Create a burger</h2>
-<form class="create-form">
-
-  <div class="form-group">
-    <label for="new-burger">New burger:</label>
-    <input type="text" id="new-burger" name="name">
+<div class="container">
+  <h2 class="text-center">Make and eat Burgers</h2>
+  <hr>
+  <div class="row">
+    <div class="col-md-4">
+      <h3 class="text-center">Create a burger</h3>
+      <form class="create-form">
+        <div class="form-group">
+          <label for="new-burger">New burger name</label>
+          <input
+            type="text"
+            class="form-control"
+            id="new-burger"
+            aria-describedby="burger-help">
+          <small id="burger-help" class="form-text text-muted">
+            Please, be as crazy as possible, no limit on name coolness!
+          </small>
+        </div>
+        <button type="submit" class="btn btn-primary">Save</button>
+      </form>
+    </div>
+    <div class="col-md-4">
+      <h3 class="text-center">Burgers ready</h3>
+      <ul class="list-group">
+        {{#each burgers}}
+          {{#unless devoured}}
+            {{> burgers/burger-block available=true}}
+          {{/unless}}
+        {{/each}}
+      </ul>
+    </div>
+    <div class="col-md-4">
+      <h3 class="text-center">Devoured burgers</h3>
+      <ul class="list-group">
+        {{#each burgers}}
+          {{#if devoured}}
+            {{> burgers/burger-block available=false}}
+          {{/if}}
+        {{/each}}
+      </ul>
+    </div>
   </div>
-
-  <button type="submit">Save</button>
-</form>
+</div>
