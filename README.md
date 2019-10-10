@@ -39,7 +39,7 @@ The current version doesn't allow let the user to delete devoured burgers.
 Adding this important feature in our roadmap.
 
 Meanwhile, the user always can contact our friendly customer service at nobody@spam.com.
-We struggle to reply in 24 years.
+We struggle to reply within 24 years.
 
 ## Additional credits
 
